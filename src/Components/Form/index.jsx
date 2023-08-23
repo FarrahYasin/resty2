@@ -1,36 +1,67 @@
+import "./Form.scss";
+import { useState } from "react";
 
-import './Form.scss';
+function Form(props) {
+  const [url, setUrl] = useState("");
+  const [method, setMethod] = useState("GET");
 
-function Form(props){
-
- const handleSubmit = e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = {
-      method:'GET',
-      url: 'https://pokeapi.co/api/v2/pokemon',
-    };
-    props.handleApiCall(formData);
-  }
 
- 
-    return (
-      <>
-        <form onSubmit={handleSubmit}>
-          <label >
-            <span>URL: </span>
-            <input name='url' type='text' />
-            <button type="submit">GO!</button>
-          </label>
-          <label className="methods">
-            <span id="get">GET</span>
-            <span id="post">POST</span>
-            <span id="put">PUT</span>
-            <span id="delete">DELETE</span>
-          </label>
-        </form>
-      </>
-    );
-  
+    const formData = {
+      method: method,
+      url: url,
+    };
+
+    props.handleApiCall(formData);
+  };
+
+  return (
+    <div className="div1">
+      <form onSubmit={handleSubmit}>
+        <label>
+          <span>URL: </span>
+          <input
+            name="url"
+            type="text"
+            placeholder="Enter URL HERE"
+            onChange={(e) => setUrl(e.target.value)}
+          />
+          <button type="submit">GO!</button>
+        </label>
+      </form>
+      
+      <br/>
+      <label className="methods">
+        <button onClick={() => setMethod("GET")} id="get">
+          GET
+        </button>
+
+        <button onClick={() => setMethod("POST")} id="post">
+          POST
+        </button>
+        <button onClick={() => setMethod("PUT")} id="put">
+          PUT
+        </button>
+        <button onClick={() => setMethod("DELET")} id="delete">
+          DELETE
+        </button>
+      </label>
+     
+
+      <label>
+        Post and update
+       <br/>
+        <textarea
+          id="myTextarea"
+          name="comments"
+          rows="4"
+          cols="100"
+          placeholder="JSON  Format"
+        ></textarea>
+      </label>
+    </div>
+  );
 }
 
 export default Form;
