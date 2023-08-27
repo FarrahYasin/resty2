@@ -17,22 +17,33 @@ function Form(props) {
   };
 
   return (
-    <div className="div1">
+    <div className="container">
+      <div className="text">Contact us Form</div>
+
       <form onSubmit={handleSubmit}>
+        <div className="form-row">
+          <span className="text">URL: </span>
+          <div className="input-data">
+            <input
+              name="url"
+              type="text"
+              placeholder="Enter URL HERE"
+              onChange={(e) => setUrl(e.target.value)}
+            />
+          </div>
+          <div className="underline"></div>
+        </div>
         <label>
-          <span>URL: </span>
-          <input
-            name="url"
-            type="text"
-            placeholder="Enter URL HERE"
-            onChange={(e) => setUrl(e.target.value)}
-          />
-          <button type="submit">GO!</button>
+          <button id="go" type="submit">
+            GO!
+          </button>
         </label>
       </form>
-      
-      <br/>
-      <label className="methods">
+      <br />
+
+      <div className="text">Post and update</div>
+
+      <div className="main-container">
         <button onClick={() => setMethod("GET")} id="get">
           GET
         </button>
@@ -40,23 +51,23 @@ function Form(props) {
         <button onClick={() => setMethod("POST")} id="post">
           POST
         </button>
+
         <button onClick={() => setMethod("PUT")} id="put">
           PUT
         </button>
+
         <button onClick={() => setMethod("DELET")} id="delete">
           DELETE
         </button>
-      </label>
-     
+      </div>
 
       <label>
-        Post and update
-       <br/>
         <textarea
           id="myTextarea"
           name="comments"
-          rows="4"
-          cols="100"
+          rows="8"
+          cols="80"
+          required
           placeholder="JSON  Format"
         ></textarea>
       </label>

@@ -8,19 +8,19 @@ import Results from './Components/Results';
 
 
 function App() {
-const [data, setData]= useState(null);
+const [data, setData]= useState({headers: null, results:null});
 const [requestParams, setRequestParams]= useState({});
 const [loading, setLoading] = useState(false);
-
+const [selectedMethod, setSelectedMethod] = useState(""); 
 
  const callApi= async (requestParams) => {
   
    setLoading(true);
-  let req = await axios.get(requestParams.url);
-    setData(req.data);
+  let res = await axios.get(requestParams.url);
+    setData({headers: res.headers, results: res.data});
     setRequestParams(requestParams);
+    setSelectedMethod(requestParams.method);
     setLoading(false);
-
   }
 
     return (
@@ -28,9 +28,8 @@ const [loading, setLoading] = useState(false);
         <Header />
         <div>Request Method: {requestParams.method}</div>
         <div>URL: {requestParams.url}</div>
-
         <Form handleApiCall={callApi} />
-        <Results data={data} loading={loading}/>
+        <Results data={data} loading={loading} selectedMethod={selectedMethod} requestParams={requestParams}/>
         <Footer />
       </>
     );
