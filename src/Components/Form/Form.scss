@@ -180,7 +180,9 @@ textarea{
 #get, #post, #delete,#put:hover, #go:hover {
   outline: 0;
 }
-
+#go {
+  margin-left: 200px;
+}
 
 @media (min-width: 768px) {
   #get, #post, #delete, #put, #go {
