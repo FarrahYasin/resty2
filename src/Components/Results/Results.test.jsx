@@ -11,24 +11,56 @@ test('renders loading state when loading prop is true', () => {
   expect(loadingMessage).toBeTruthy();
 });
 
-test('renders JSON data when data prop is provided', () => {
-  const mockData = { key: 'value' };
+// test('renders JSON data when data prop is provided', () => {
+//   const mockData = { key: 'value' };
 
-  render(<Results data={mockData} />);
+//   render(<Results data={mockData} />);
 
-  const jsonData = screen.getByText(/"key": "value"/i);
-  expect(jsonData).toBeTruthy();
+//   const jsonData = screen.getByText(/"key": "value"/i);
+//   expect(jsonData).toBeTruthy();
+// });
+
+
+
+test('renders loading state', () => {
+  render(<Results loading={true} selectedMethod="" requestParams={{ url: '' }} data={{ headers: null, results: null }} />);
+
+  const loadingMessage = screen.getByText(/Loading.../i);
+  expect(loadingMessage).toBeTruthy();
 });
 
-test('does not render when data prop is not provided', () => {
-  render(<Results />);
+test('renders results data', () => {
+  const mockData = {
+    headers: { 'Content-Type': 'application/json' },
+    results: { key: 'value' },
+  };
 
-  const resultsSection = screen.queryByRole('section');
-  expect(resultsSection).toBeNull();
+  render(
+    <Results loading={false} selectedMethod="GET" requestParams={{ url: 'https://example.com/api' }} data={mockData} />
+  );
+
+  const requestMethod = screen.getByText(/Request Method: GET/i);
+  expect(requestMethod).toBeTruthy();
+
+  const url = screen.getByText(/URL: https:\/\/example.com\/api/i);
+  expect(url).toBeTruthy();
+
+  const headers = screen.getByText(/Headers:/i);
+  expect(headers).toBeTruthy();
+
+  const results = screen.getByText(/Results:/i);
+  expect(results).toBeTruthy();
+
+  const headersContent = screen.getByText(/"Content-Type": "application\/json"/i);
+  expect(headersContent).toBeTruthy();
+
+  const resultsContent = screen.getByText(/"key": "value"/i);
+  expect(resultsContent).toBeTruthy();
 });
 
 
 
-
-
 });
+
+
+

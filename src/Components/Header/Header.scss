@@ -1,6 +1,16 @@
 $backgroundColor: #71c9df;
 $radius: 40%;
 
+ header {
+    background: linear-gradient(25deg, #56d8e4 10%, #9f01ea 90%);;
+    border-bottom: 1px solid #eee;
+    color: #eee;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    width:80%;
+    
+  }
 form {
   display: inline-block;
   margin: auto;
@@ -11,7 +21,7 @@ form {
     margin: 1rem 0;
 
     h1 {
-     color:black;
+     color: #56d8e4;
      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     }
   }
