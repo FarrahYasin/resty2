@@ -23,10 +23,10 @@ const [selectedMethod, setSelectedMethod] = useState("");
     setLoading(false);
   }
 
-  useEffect(() => {
-    callApi(requestParams);
-    setLoading(false)
-}, [requestParams]);
+//   useEffect(() => {
+//     callApi(requestParams);
+//     setLoading(false)
+// }, [requestParams]);
 
 
     return (
