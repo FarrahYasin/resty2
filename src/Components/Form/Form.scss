@@ -176,9 +176,11 @@ textarea{
   cursor: pointer;
 }
 
-#get, #post, #delete,#put:active,
-#get, #post, #delete,#put:hover, #go:hover {
-  outline: 0;
+#get:active, #post:active, #delete:active,#put:active, #go:active {
+  color: #3498db;
+}
+#get:hover, #post:hover, #delete:hover,#put:hover, #go:hover {
+  background-image: linear-gradient(144deg,#AF40FF, #5B42F3 111%,#00DDEB);
 }
 
 
