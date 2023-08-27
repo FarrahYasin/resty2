@@ -9,6 +9,6 @@ Currently, two official plugins are available:
 
 ---
 
->URL: https://main--delicate-horse-29351e.netlify.app/
+>[URL](https://main--delicate-horse-29351e.netlify.app/)
 >
-> PR: https://github.com/FarrahYasin/resty2/pull/5
+>[PR](https://github.com/FarrahYasin/resty2/pull/5)
