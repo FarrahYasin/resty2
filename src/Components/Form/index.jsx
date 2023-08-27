@@ -18,7 +18,7 @@ function Form(props) {
 
   return (
     <div className="container">
-      <div className="text">Contact us Form</div>
+      <div className="text"> Form</div>
 
       <form onSubmit={handleSubmit}>
         <div className="form-row">

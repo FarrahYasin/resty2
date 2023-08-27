@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import axios from 'axios'
 import './App.scss';
 import Header from './Components/Header';
@@ -22,6 +22,12 @@ const [selectedMethod, setSelectedMethod] = useState("");
     setSelectedMethod(requestParams.method);
     setLoading(false);
   }
+
+  useEffect(() => {
+    callApi(requestParams);
+    setLoading(false)
+}, [requestParams]);
+
 
     return (
       <>

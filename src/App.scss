@@ -2,7 +2,7 @@ $backgroundColor: #f5f5f5;
 
 html, body {
   height: 100%;
-  // width:100%;
+  width:100%;
   margin: 0;
   padding: 0;
 }
@@ -15,14 +15,15 @@ body {
     display: flex;
     flex-direction: column;
     height: 100%;
+    width: 100%;
   }
 
-  footer {
-    background: darken($backgroundColor, 50);
-    border-top: 1px solid #eee;
-    padding: 1em 3em;
-    margin: 0;
-  }
+  // footer {
+  //   background: darken($backgroundColor, 50);
+  //   border-top: 1px solid #eee;
+  //   padding: 1em 3em;
+  //   margin: 0;
+  // }
 
   // header {
   //   background: darken($backgroundColor, 75);
