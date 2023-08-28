@@ -1,16 +1,33 @@
 // import React from 'react';
 // import PropTypes from 'prop-types';
+// import { useState } from "react";
+
 import './Results.scss';
 import JSONPretty from 'react-json-pretty';
 import 'react-json-pretty/themes/adventure_time.css'; 
 function Results(props){
+  
+  function changeTheUrl(){
+    props.data=(props.changeUrl(props.data.results.next))
+  }
+  function changeToPrevUrl(){
+    props.changeUrl(props.data.results.previous)
+  }
+
     return (
       <>
-   <div className="button-container">
-        {props.data && props.data.next || <button>Next</button>}
+      {/* 
+    <div className="button-container">
+        {props.data.results && props.props.data.results.next && <button onClick={nextFun}>Next</button>}
         {props.data && props.data.previous || <button >Previous</button>}
+      </div> */}
+
+    <div className="button-container">
+        {props.data.results&&props.data.results.next &&(<button onClick={changeTheUrl}>Next</button>)}
+        {props.data.results&&props.data.results.previous &&(<button onClick={changeToPrevUrl}>Previous</button>)}
+        {/* {props.data && props.data.previous || <button >Previous</button>} */}
       </div>
-      
+   
     <section>
     {props.loading ? (
       <h2>Loading...</h2>

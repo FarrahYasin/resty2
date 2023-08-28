@@ -17,6 +17,7 @@ function Form(props) {
   };
 
   return (
+    <>
     <div className="container">
       <div className="text"> Form</div>
 
@@ -44,7 +45,7 @@ function Form(props) {
       <div className="text">Post and update</div>
 
       <div className="main-container">
-        <button onClick={() => setMethod("GET")} id="get">
+        <button  onClick={() => setMethod("GET")} id="get">
           GET
         </button>
 
@@ -72,6 +73,8 @@ function Form(props) {
         ></textarea>
       </label>
     </div>
+    
+    </>
   );
 }
 
