@@ -7,12 +7,10 @@ function Form(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const formData = {
       method: method,
       url: url,
     };
-
     props.handleApiCall(formData);
   };
 
@@ -45,19 +43,35 @@ function Form(props) {
       <div className="text">Post and update</div>
 
       <div className="main-container">
-        <button  onClick={() => setMethod("GET")} id="get">
+      <button
+          onClick={() => setMethod("GET")}     
+          style={{ backgroundImage: method === "GET" ? "linear-gradient(11deg,#6e438e, #5B42F3 1111%,#6e438e)" : "transparent" }}
+          id="get"
+        >
           GET
         </button>
 
-        <button onClick={() => setMethod("POST")} id="post">
+        <button
+          onClick={() => setMethod("POST")}
+          style={{ backgroundImage: method === "POST" ? "linear-gradient(11deg,#6e438e, #5B42F3 1111%,#6e438e)" : "transparent" }}
+          id="post"
+        >
           POST
         </button>
 
-        <button onClick={() => setMethod("PUT")} id="put">
+        <button
+          onClick={() => setMethod("PUT")}
+          style={{ backgroundImage: method === "PUT" ? "linear-gradient(11deg,#6e438e, #5B42F3 1111%,#6e438e)" : "transparent" }}
+          id="put"
+        >
           PUT
         </button>
 
-        <button onClick={() => setMethod("DELET")} id="delete">
+        <button
+          onClick={() => setMethod("DELETE")}
+          style={{ backgroundImage: method === "DELETE" ? "linear-gradient(11deg,#6e438e, #5B42F3 1111%,#6e438e)" : "transparent" }}
+          id="delete"
+        >
           DELETE
         </button>
       </div>
