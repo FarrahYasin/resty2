@@ -6,8 +6,8 @@ export const initialState = {
   loading: false,
   selectedMethod: "",
   history: [],
-  url: "",
-  method: "GET",
+  url: "",                           // FORM
+  method: "GET",                     // FORM
 };
 
 export const reducer = (state, action) => {
@@ -22,9 +22,9 @@ export const reducer = (state, action) => {
       return { ...state, selectedMethod: action.payload };
     case ActionTypes.SET_ADD_TO_HISTORY:
       return { ...state, history: [action.payload, ...state.history] };
-    case ActionTypes.SET_URL_IN_FORM:
+    case ActionTypes.SET_URL_IN_FORM:       // FORM
       return { ...state, url: action.payload };
-    case ActionTypes.SET_METHOD_IN_FORM:
+    case ActionTypes.SET_METHOD_IN_FORM:     // FORM
       return { ...state, method: action.payload };
     default:
       return state;
