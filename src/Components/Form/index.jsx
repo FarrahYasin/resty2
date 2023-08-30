@@ -17,7 +17,7 @@ function Form(props) {
   return (
     <>
     <div className="container">
- effect-hook
+
       <div className="text"> Form</div>
 
       <form onSubmit={handleSubmit}>

@@ -1,0 +1,44 @@
+// .history{
+
+// }
+// .list-of-history{
+
+// }
+.item-of-history{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+// .info-about-history{
+
+// }
+.method-history {
+  color: #209ca5;
+
+}
+.text-history {
+  color: #6e438e;
+
+}
+.span1-url-of-history {
+  color: #209ca5;
+  
+}
+.span2-url-history {
+  color: #6e438e;
+}
+.button-history {
+  background-image: linear-gradient(11deg, #6e438e, #5b42f3 361%, #00ddeb);
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 6px;
+  margin: 15px;
+}
+// .hr-button-history {
+//   background-image: linear-gradient(11deg, #6e438e, #5b42f3 26%, #00ddeb);
+//   margin: 20px;
+//   width: 900px;
+//   height: 3px;
+// }
