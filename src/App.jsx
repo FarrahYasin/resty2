@@ -6,46 +6,14 @@ import Footer from "./Components/Footer";
 import Form from "./Components/Form";
 import Results from "./Components/Results";
 import History from "./Components/History";
-
 // _______________________solution using useReducer__________________________________
-
-const initialState = {
-  data: { headers: null, results: null },
-  requestParams: {},
-  loading: false,
-  selectedMethod: "",
-  history: [],
-};
-
-const ActionTypes = { 
-  SET_DATA: "SET_DATA",
-  SET_REQUEST_PARAMS: "SET_REQUEST_PARAMS",
-  SET_LOADING: "SET_LOADING",
-  SET_SELECTED_METHOD: "SET_SELECTED_METHOD",
-  SET_ADD_TO_HISTORY: "ADD_TO_HISTORY"
-  
-};
-
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case ActionTypes.SET_DATA:
-      return { ...state, data: action.payload };
-    case ActionTypes.SET_REQUEST_PARAMS:
-      return { ...state, requestParams: action.payload };
-    case ActionTypes.SET_LOADING:
-      return { ...state, loading: action.payload };
-    case ActionTypes.SET_SELECTED_METHOD:
-      return { ...state, selectedMethod: action.payload };
-      case ActionTypes.SET_ADD_TO_HISTORY:
-        return { ...state, history: [action.payload, ...state.history] };
-    default:
-      return state;
-  }
-};
+import {ActionTypes} from './Reducers/actions'
+import {initialState, reducer} from './Reducers/reducer'
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => {
   
   const callApi = async (requestParams) => {
     if (requestParams.url) {
@@ -66,10 +34,9 @@ function App() {
     }
   };
 
-  useEffect(() => {
-    callApi(state.requestParams);
-    // dispatch({ type: ActionTypes.SET_LOADING, payload: true }); //setLoading(true);
-  }, [state.requestParams]);
+  // dispatch({ type: ActionTypes.SET_LOADING, payload: true }); //setLoading(true);
+  callApi(state.requestParams);
+}, [state.requestParams]);
 
   return (
     <>
@@ -91,6 +58,47 @@ function App() {
   );
 }
 export default App;
+
+
+
+// _____________________________________________________________________________
+// before seperat the files
+// const initialState = {
+//   data: { headers: null, results: null },
+//   requestParams: {},
+//   loading: false,
+//   selectedMethod: "",
+//   history: [],
+// };
+
+// const ActionTypes = { 
+//   SET_DATA: "SET_DATA",
+//   SET_REQUEST_PARAMS: "SET_REQUEST_PARAMS",
+//   SET_LOADING: "SET_LOADING",
+//   SET_SELECTED_METHOD: "SET_SELECTED_METHOD",
+//   SET_ADD_TO_HISTORY: "ADD_TO_HISTORY"
+  
+// };
+
+
+// const reducer = (state, action) => {
+//   switch (action.type) {
+//     case ActionTypes.SET_DATA:
+//       return { ...state, data: action.payload };
+//     case ActionTypes.SET_REQUEST_PARAMS:
+//       return { ...state, requestParams: action.payload };
+//     case ActionTypes.SET_LOADING:
+//       return { ...state, loading: action.payload };
+//     case ActionTypes.SET_SELECTED_METHOD:
+//       return { ...state, selectedMethod: action.payload };
+//       case ActionTypes.SET_ADD_TO_HISTORY:
+//         return { ...state, history: [action.payload, ...state.history] };
+//     default:
+//       return state;
+//   }
+// };
+// _____________________________________________________________________________________
+
 
 
   // _______________________solution using useState__________________________________
