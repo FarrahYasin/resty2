@@ -4,9 +4,9 @@ import JSONPretty from 'react-json-pretty';
 import 'react-json-pretty/themes/adventure_time.css';
 
 function Results(props) {
-  const changeUrl = (url) => {
-    props.handleApiCall({ ...props.requestParams, url });
-  };
+  // const changeUrl = (url) => {
+  //   // props.handleApiCall({ ...props.requestParams, url });
+  // };
 
   return (
     <section>
@@ -36,12 +36,13 @@ function Results(props) {
             {props.data.results && (
               <div className="button-container">
                 {props.data.results.previous && (
-                  <button onClick={() => changeUrl(props.data.results.previous)}>
+                  <button onClick={() => props.updateUrl(props.data.results.previous)}>
                     Previous
                   </button>
+                  
                 )}
                 {props.data.results.next && (
-                  <button onClick={() => changeUrl(props.data.results.next)}>
+                  <button onClick={() => props.updateUrl(props.data.results.next)}>
                     Next
                   </button>
                 )}
