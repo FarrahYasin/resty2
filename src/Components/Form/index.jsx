@@ -1,19 +1,20 @@
 import "./Form.scss";
 // import { useState } from "react";
-import { useReducer } from "react";
+// import { useReducer } from "react";
 import { ActionTypes } from "../../Reducers/actions";
-import { initialState, reducer } from "../../Reducers/reducer";
+// import { initialState, reducer } from "../../Reducers/reducer";
 
 function Form(props) {
   // const [url, setUrl] = useState("");
   // const [method, setMethod] = useState("GET");
-  const [state, dispatch] = useReducer(reducer, initialState);
 
+  // const [state, dispatch] = useReducer(reducer, initialState);
+//  console.log('this is the state from the form',state)
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = {
-      method: state.method,
-      url: state.url,
+      method: props.state.method,
+      url: props.state.url,
     };
     props.handleApiCall(formData);
   };
@@ -33,7 +34,7 @@ function Form(props) {
                 placeholder="Enter URL HERE"
                 // onChange={(e) => setUrl(e.target.value)}
                 onChange={(e) =>
-                  dispatch({
+                  props.dispatch({
                     type: ActionTypes.SET_URL_IN_FORM,
                     payload: e.target.value,
                   })
@@ -57,17 +58,18 @@ function Form(props) {
             // onClick={() => setMethod("GET")}
             onClick={() => {
               () =>
-                dispatch({
+                props.dispatch({
                   type: ActionTypes.SET_METHOD_IN_FORM,
                   payload: "GET",
                 });
             }}
             style={{
               backgroundImage:
-                state.method === "GET"
+                props.state.method === "GET"
                   ? "linear-gradient(11deg,#6e438e, #5B42F3 1111%,#6e438e)"
-                  : "transparent",
+                  : "",
             }}
+
             id="get"
           >
             GET
@@ -76,31 +78,32 @@ function Form(props) {
           <button
             // onClick={() => setMethod("POST")}
             onClick={() =>
-              dispatch({
+              props.dispatch({
                 type: ActionTypes.SET_METHOD_IN_FORM,
                 payload: "POST",
               })
             }
             style={{
               backgroundImage:
-                state.method === "POST"
+                props.state.method === "POST"
                   ? "linear-gradient(11deg,#6e438e, #5B42F3 1111%,#6e438e)"
-                  : "transparent",
+                  : "",
             }}
             id="post"
+
           >
             POST
           </button>
           <button
             // onClick={() => setMethod("PUT")}
             onClick={() =>
-              dispatch({ type: ActionTypes.SET_METHOD_IN_FORM, payload: "PUT" })
+              props.dispatch({ type: ActionTypes.SET_METHOD_IN_FORM, payload: "PUT" })
             }
             style={{
               backgroundImage:
-                state.method === "PUT"
+                props.state.method === "PUT"
                   ? "linear-gradient(11deg,#6e438e, #5B42F3 1111%,#6e438e)"
-                  : "transparent",
+                  : "",
             }}
             id="put"
           >
@@ -110,16 +113,17 @@ function Form(props) {
           <button
             // onClick={() => setMethod("DELETE")}
             onClick={() =>
-              dispatch({
+              props.dispatch({
                 type: ActionTypes.SET_METHOD_IN_FORM,
                 payload: "DELETE",
               })
             }
             style={{
               backgroundImage:
-                state.method === "DELETE"
+                props.state.method === "DELETE"
                   ? "linear-gradient(11deg,#6e438e, #5B42F3 1111%,#6e438e)"
-                  : "transparent",
+                  : "",
+                  // : "transparent",
             }}
             id="delete"
           >
